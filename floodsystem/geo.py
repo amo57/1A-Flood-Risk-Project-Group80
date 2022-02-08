@@ -48,7 +48,8 @@ def rivers_with_station(stations):
 def stations_by_river(stations):
     rivers = {}
     for value in rivers_with_station(stations):
+        station_1 = []
         for station in stations:
-            
-        rivers.update({value: station})
-    return
+            station_1.append(station.name)
+        rivers.update({value: station_1})
+    return rivers
