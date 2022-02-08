@@ -5,9 +5,10 @@
 geographical data.
 
 """
-
+from haversine import haversine
 from .utils import sorted_by_key  # noqa
-from haversine import haversine, Unit
+
+
 
 def stations_by_distance(stations, p):
     stations_name = []
@@ -35,3 +36,11 @@ def stations_within_radius(stations, centre, r):
             pass
     station_list = sorted(station_list)
     return station_list
+
+def rivers_with_station(stations):
+    river_station = []
+    for station in stations:
+        if station.river == True:
+            river_station = river_station.append(station.river)
+    river_station = sorted(river_station)  
+    return river_station
