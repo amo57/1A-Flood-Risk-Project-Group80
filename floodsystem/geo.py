@@ -3,8 +3,8 @@
 # SPDX-License-Identifier: MIT
 """This module contains a collection of functions related to
 geographical data.
-
 """
+
 from haversine import haversine
 from .utils import sorted_by_key  # noqa
 
@@ -40,7 +40,15 @@ def stations_within_radius(stations, centre, r):
 def rivers_with_station(stations):
     river_station = []
     for station in stations:
-        if station.river == True:
+        if not station.river in river_station:
             river_station = river_station.append(station.river)
     river_station = sorted(river_station)  
     return river_station
+
+def stations_by_river(stations):
+    rivers = {}
+    for value in rivers_with_station(stations):
+        for station in stations:
+            
+        rivers.update({value: station})
+    return
