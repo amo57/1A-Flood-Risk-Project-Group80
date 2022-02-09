@@ -53,3 +53,34 @@ def stations_by_river(stations):
             station_1.append(station.name)
         rivers.update({value: station_1})
     return rivers
+
+def rivers_by_station_number(stations, N):
+    rivers_name = []
+    stations_number = []
+    for station in stations:
+        if station.river not in rivers_name:
+            rivers_name.append(station.river)
+        else:
+             pass
+    for i in rivers_name:  ## start looping through the river_name list
+        a = 0  ## counting 
+        for n in stations: ## double loop, to loop through the big stations list
+            if i == n.river:
+                a += 1
+            else:
+                pass
+        stations_number.append(a)
+    tuples = list(zip(rivers_name, stations_number))
+    tuples = sorted_by_key(tuples, 1)
+    tuples = tuples[::-1]
+    """To set the number of outputs based on the number ranking of stations (intead of pre positions of river in rivers_name list) """
+    """Assuming we start counting at 1, i.e 1,2,3.... Hence the N-1 is shown below"""
+    Low_bound_station = tuples[N-1][1]
+    count = 0
+    for i in tuples:  ## start looping through the list of tuples
+        if i[1] >= Low_bound_station:
+            count += 1
+        if i[1] < Low_bound_station:
+            break
+
+    return tuples[:count]
