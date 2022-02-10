@@ -49,5 +49,5 @@ class MonitoringStation:
         
         for station in stations:
             if not(station.typical_range_consistent()):
-                inconsistent_stations.append(station)
+                inconsistent_stations.append(station.name)
         return inconsistent_stations
