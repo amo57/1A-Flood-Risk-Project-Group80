@@ -12,4 +12,6 @@ def run():
     """Test to make sure the number of station presented is reasonable"""
     assert len(x) <=950
 
-run()
+if __name__ == "__main__":
+    print(" Task1C")
+    run()

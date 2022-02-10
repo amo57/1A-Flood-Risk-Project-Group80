@@ -11,6 +11,9 @@ def run():
     """Test the length of the lists"""
     assert len(A) == 10
     assert len(B) == 10
-run()
+
+if __name__ == "__main__":
+    print(" Task1B")
+    run()
 
 

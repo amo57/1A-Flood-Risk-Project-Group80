@@ -12,5 +12,7 @@ def run():
     rivers = sorted(rivers)
     print( len(rivers), 'rivers. First 10 - ', rivers[:10] )
     
-    
+if __name__ == "__main__":
+    print(" Task1D")
+    run()
 
