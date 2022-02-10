@@ -9,5 +9,7 @@ def run():
     centre = (52.2053, 0.1218)
     x = stations_within_radius(stations, centre, r)
     print(x)
+    """Test to make sure the number of station presented is reasonable"""
+    assert len(x) <=950
 
 run()
