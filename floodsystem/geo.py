@@ -35,23 +35,73 @@ def stations_within_radius(stations, centre, r):
             pass
     station_list = sorted(station_list)
     return station_list
-
 def rivers_with_station(stations):
-    river_station = []
+    rivers_name = []
+    stations_number = []
     for station in stations:
-        if not(station.river in river_station):
-            river_station = river_station.append(station.river)
-    river_station = sorted(river_station)  
-    return river_station
+        if station.river not in rivers_name:
+            rivers_name.append(station.river)
+        else:
+             pass
+    for i in rivers_name:  ## start looping through the river_name list
+        a = 0  ## counting 
+        for n in stations: ## double loop, to loop through the big stations list
+            if i == n.river:
+                a += 1
+            else:
+                pass
+        stations_number.append(a)
+    tuples = list(zip(rivers_name, stations_number))
+    tuples = sorted_by_key(tuples, 1)
+    Low_bound_station = 1
+    river_list = []
+    for i in tuples:  ## start looping through the list of tuples
+        if i[1] >= Low_bound_station:
+            river_list.append(i[0])
+        if i[1] < Low_bound_station:
+            continue
+    river_list = sorted(river_list)
+    assert len(river_list) == 950
+    return river_list[:10]
 
 def stations_by_river(stations):
-    rivers = {}
-    for value in rivers_with_station(stations):
-        station_1 = []
-        for station in stations:
-            station_1.append(station.name)
-        rivers.update({value: station_1})
-    return rivers
+    rivers_name = []
+    for i in stations:
+        if i.river not in rivers_name:
+            rivers_name.append(i.river)
+        elif i.river in rivers_name:
+            continue
+    big_list = []
+    for n in rivers_name:
+        lists = []
+        for y in stations:
+            if n == y.river:
+                lists.append(y.name)
+            elif n != y.river:
+                continue
+        lists = sorted(lists)
+        big_list.append(lists)
+    dictionary = dict(zip(rivers_name, big_list))
+    dicti = {}
+    for key in sorted(dictionary):
+        dicti.update({key : dictionary[key]})
+    return dicti
+#def rivers_with_station(stations):
+    #river_station = []
+    #for station in stations:
+        #if not(station.river in river_station):
+            #river_station = river_station.append(station.river)
+    #river_station = sorted(river_station)  
+    #return river_station
+
+#def stations_by_river(stations):
+    #rivers = {}
+    #for value in rivers_with_station(stations):
+        #station_1 = []
+        #for station in stations:
+            #station_1.append(station.name)
+        #rivers.update({value: station_1})
+    #return rivers
 
 def rivers_by_station_number(stations, N):
     rivers_name = []
